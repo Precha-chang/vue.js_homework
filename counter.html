@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,39 +9,109 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <title>My Counter</title>
+    <title>So Dem A Com - Neon Glowing Theme</title>
+    <style>
+      body {
+        background: radial-gradient(circle, #0d0d0d, #1a1a1a);
+        color: #e0e0e0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+      }
+      .card {
+        background: rgba(26, 26, 26, 0.9);
+        border: 2px solid #ff4081;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255, 64, 129, 0.6), 0 0 30px rgba(255, 64, 129, 0.4);
+        transition: transform 0.2s, box-shadow 0.3s;
+        text-align: center;
+        color: #f0f0f0;
+        padding: 2rem;
+      }
+      .card:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 30px rgba(255, 0, 150, 0.8), 0 0 60px rgba(255, 0, 150, 0.6);
+      }
+      .card-title {
+        font-size: 3.5rem;
+        color: #ff4081;
+        margin: 0.5rem 0;
+        text-shadow: 0 0 10px #ff4081, 0 0 20px #ff4081;
+      }
+      .card-text {
+        font-size: 1.5rem;
+        color: #b3b3b3;
+        text-shadow: 0 0 8px rgba(179, 179, 179, 0.5);
+      }
+      .btn-primary {
+        background-color: #651fff;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        font-size: 1.25rem;
+        border-radius: 25px;
+        transition: background 0.3s, box-shadow 0.3s;
+        color: #ffffff;
+        box-shadow: 0 0 10px #651fff, 0 0 20px #651fff;
+      }
+      .btn-primary:hover {
+        background-color: #d500f9;
+        box-shadow: 0 0 20px #d500f9, 0 0 40px #d500f9;
+      }
+      /* Floating neon dots for background effect */
+      .neon-dot {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: rgba(255, 0, 150, 0.8);
+        border-radius: 50%;
+        box-shadow: 0 0 20px rgba(255, 0, 150, 0.6);
+        animation: float 10s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+      }
+    </style>
   </head>
   <body>
-    <div id="app" class="container">
-      <div class="card" style="width: 18rem">
+    <div id="app" class="container d-flex justify-content-center align-items-center">
+      <div class="card" style="width: 20rem;">
         <div class="card-body">
+          <h2 class="card-text fw-bold">So Dem A Com</h2>
           <h1 class="card-title">{{ number }}</h1>
-          <p class="card-text">Hello, This is my counter</p>
-          <a href="#" class="btn btn-primary" @click="increment()"
-            >add number</a
-          >
+          <p class="card-text">ปริมาณคนที่มามันส์ด้วยกัน</p>
+          <button class="btn btn-primary" @click="increment">ชอบก็กด คิมิโนโตะ !!!</button>
         </div>
       </div>
     </div>
 
+    <!-- Neon dots floating in the background -->
+    <div class="neon-dot" style="top: 10%; left: 15%; animation-delay: 0s;"></div>
+    <div class="neon-dot" style="top: 25%; left: 70%; animation-delay: 2s;"></div>
+    <div class="neon-dot" style="top: 50%; left: 30%; animation-delay: 4s;"></div>
+    <div class="neon-dot" style="top: 75%; left: 80%; animation-delay: 6s;"></div>
+    <div class="neon-dot" style="top: 85%; left: 45%; animation-delay: 8s;"></div>
+
     <script>
-      const { createApp } = Vue
+      const { createApp } = Vue;
       const app = createApp({
         data() {
           return {
             number: 0,
-          }
+          };
         },
-
         methods: {
           increment() {
-            this.number += 1
+            this.number += 1;
           },
         },
-      })
-
-      app.mount('#app')
+      });
+      app.mount('#app');
     </script>
   </body>
 </html>
