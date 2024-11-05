@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผลไม้ เงาะ</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        body {
+            background: #fff9e6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff4d4d' fill-opacity='0.1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(255, 196, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .rambutan-decoration {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 120px;
+            height: 120px; 
+            background: #ff4d4d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(255, 196, 0, 0.2);
+            background-image: url('https://png.pngtree.com/png-vector/20240603/ourlarge/pngtree-funny-rambutan-fruit-character-mascot-running-isolated-cartoon-in-flat-style-png-image_12611721.png');
+            background-size: cover;
+        }
+
+        h1 {
+            color: #997a00;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #ff4d4d, #997a00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff4d4d, #fff9e6);
+            border-radius: 2px;
+        }
+
+        .form-section {
+            background: #fffef7;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 1px solid #fff5cc;
+        }
+
+        .form-section h3 {
+            color: #997a00;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #fff5cc;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #806600;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        select,
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #fff5cc;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23997a00' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 2.5rem;
+            cursor: pointer;
+            color: #997a00;
+        }
+
+        button {
+            background: linear-gradient(135deg, #ff4d4d, #ff9999);
+            color: #806600;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 196, 0, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 196, 0, 0.3);
+        }
+
+        .result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #fffef7;
+            border-radius: 15px;
+            border: 1px solid #fff5cc;
+        }
+
+        .result h2 {
+            color: #997a00;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #fff5cc;
+            padding-bottom: 0.5rem;
+        }
+
+        .result p {
+            margin: 0.75rem 0;
+            color: #806600;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed #fff5cc;
+        }
+
+        .result p strong {
+            color: #997a00;
+        }
+
+        .password-field {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="rambutan-decoration"></div>
+        <h1>ผลไม้ เงาะ</h1>
+        
+        <form @submit.prevent="submitForm">
+            <div class="form-section">
+                <h3>ข้อมูลผู้ใช้งาน</h3>
+                <div class="form-group">
+                    <label>คำนำหน้า:</label>
+                    <select v-model="formData.title" required>
+                        <option value="">กรุณาเลือกคำนำหน้า</option>
+                        <option value="นาย">นาย</option>
+                        <option value="นาง">นาง</option>
+                        <option value="นางสาว">นางสาว</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>ชื่อ:</label>
+                    <input type="text" v-model="formData.firstName" required>
+                </div>
+                <div class="form-group">
+                    <label>นามสกุล:</label>
+                    <input type="text" v-model="formData.lastName" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>ข้อมูลการเข้าสู่ระบบ</h3>
+                <div class="form-group">
+                    <label>อีเมล:</label>
+                    <input type="email" v-model="formData.email" required>
+                </div>
+                <div class="form-group">
+                    <label>รหัสผ่าน:</label>
+                    <div class="password-field">
+                        <input :type="showPassword ? 'text' : 'password'" v-model="formData.password" required>
+                        <i class="password-toggle fas" 
+                           :class="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+                           @click="togglePassword"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>เบอร์โทรศัพท์:</label>
+                    <input type="tel" v-model="formData.phone" required>
+                </div>
+            </div>
+
+            <button type="submit">สมัครสมาชิก</button>
+        </form>
+
+        <div v-if="showResult" class="result">
+            <h2>ข้อมูลที่ลงทะเบียน:</h2>
+            <p><strong>คำนำหน้า:</strong> {{ formData.title }}</p>
+            <p><strong>ชื่อ:</strong> {{ formData.firstName }}</p>
+            <p><strong>นามสกุล:</strong> {{ formData.lastName }}</p>
+            <p><strong>อีเมล:</strong> {{ formData.email }}</p>
+            <p><strong>รหัสผ่าน:</strong> 
+                <span>{{ showPasswordInResult ? formData.password : '••••••••' }}
+                    <i class="fas" 
+                       :class="showPasswordInResult ? 'fa-eye-slash' : 'fa-eye'"
+                       @click="togglePasswordInResult"
+                       style="cursor: pointer; margin-left: 10px;"></i>
+                </span>
+            </p>
+            <p><strong>เบอร์โทรศัพท์:</strong> {{ formData.phone }}</p>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    formData: {
+                        title: '',
+                        firstName: '',
+                        lastName: '',
+                        email: '',
+                        password: '',
+                        phone: ''
+                    },
+                    showPassword: false,
+                    showPasswordInResult: false,
+                    showResult: false
+                }
+            },
+            methods: {
+                submitForm() {
+                    this.showResult = true;
+                },
+                togglePassword() {
+                    this.showPassword = !this.showPassword;
+                },
+                togglePasswordInResult() {
+                    this.showPasswordInResult = !this.showPasswordInResult;
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
